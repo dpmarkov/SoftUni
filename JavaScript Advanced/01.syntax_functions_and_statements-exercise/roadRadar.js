@@ -1,4 +1,4 @@
-function roadRadar([speed, area]) {
+function roadRadar(speed, area) {
     let speedLimit;
 
     switch (area){
@@ -17,17 +17,26 @@ function roadRadar([speed, area]) {
     }
 
     let diff = speed - speedLimit;
-
-    if (diff > 0 && diff <= 20){
-        console.log('speeding');
-    } else if (diff > 20 && diff <= 40){
-        console.log('excessive speeding');
-    } else if (diff > 40){
-        console.log('reckless driving');
+    let print;
+    
+    if (diff <= 0) {
+        print = `Driving ${speed} km/h in a ${speedLimit} zone`;
+    } else {
+        print = `The speed is ${diff} km/h faster than the allowed speed of ${speedLimit}`;
     }
+    
+    if (diff > 0 && diff <= 20){
+        print += ' - speeding';
+    } else if (diff > 20 && diff <= 40){
+        print += ' - excessive speeding';
+    } else if (diff > 40){
+        print += ' - reckless driving';
+    }
+
+    console.log(print);
 }
 
-roadRadar([40, 'city']);
-roadRadar([21, 'residential'])
-roadRadar([120, 'interstate'])
-roadRadar([200, 'motorway'])
+roadRadar(40, 'city');
+roadRadar(21, 'residential')
+roadRadar(120, 'interstate')
+roadRadar(200, 'motorway')
