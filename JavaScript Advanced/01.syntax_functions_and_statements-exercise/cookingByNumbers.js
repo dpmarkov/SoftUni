@@ -1,6 +1,6 @@
-function cookingByNumbers(input) {
-    let num = Number(input.shift());
-    let operation = input.shift();
+function cookingByNumbers(num, ...operations) {
+    num = Number(num);
+    let operation = operations.shift();
 
     while (operation != undefined){
         if (operation == 'chop'){
@@ -19,10 +19,10 @@ function cookingByNumbers(input) {
 
         console.log(num);
         
-        operation = input.shift();
+        operation = operations.shift();
     }
 }
 
-cookingByNumbers(['32', 'chop', 'chop', 'chop', 'chop', 'chop']);
+cookingByNumbers('32', 'chop', 'chop', 'chop', 'chop', 'chop');
 console.log('---');
-cookingByNumbers(['9', 'dice', 'spice', 'chop', 'bake', 'fillet'])
+cookingByNumbers('9', 'dice', 'spice', 'chop', 'bake', 'fillet')
