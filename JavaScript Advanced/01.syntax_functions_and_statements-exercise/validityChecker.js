@@ -1,4 +1,4 @@
-function validityChecker([x1, y1, x2, y2]) {
+function validityChecker(x1, y1, x2, y2) {
     let distance1 = Math.sqrt(Math.pow(Math.abs(x1), 2) + Math.pow(Math.abs(y1), 2));
     let distance2 = Math.sqrt(Math.pow(Math.abs(x2), 2) + Math.pow(Math.abs(y2), 2));
     let distance3 = Math.sqrt(Math.pow((x1-x2), 2) + Math.pow((y1-y2), 2));
@@ -22,10 +22,6 @@ function validityChecker([x1, y1, x2, y2]) {
     }
 }
 
-validityChecker(
-    [3, 0, 0, 4]
-)
+validityChecker(3, 0, 0, 4)
 console.log('---');
-validityChecker(
-    [2, 1, 1, 1]
-)
+validityChecker(2, 1, 1, 1)
