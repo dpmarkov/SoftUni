@@ -4,7 +4,7 @@ function aggregateElements(arr){
 
         arr.forEach(
             x => result += x
-        )
+        );
 
         return result;
     }
@@ -14,7 +14,7 @@ function aggregateElements(arr){
         
         arr.forEach(
             x => result += 1/x
-        )
+        );
 
         return result;
     }
@@ -24,7 +24,7 @@ function aggregateElements(arr){
         
         arr.forEach(
             x => result += x
-        )
+        );
 
         return result;
     }
@@ -34,6 +34,6 @@ function aggregateElements(arr){
     console.log(concat(arr));
 }
 
-aggregateElements([1, 2, 3])
+aggregateElements([1, 2, 3]);
 console.log('---');
-aggregateElements([2, 4, 8, 16])
+aggregateElements([2, 4, 8, 16]);

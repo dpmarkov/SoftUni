@@ -4,4 +4,4 @@ function squareOfStars(n){
     }
 }
 
-squareOfStars(5)
+squareOfStars(5);

@@ -1,9 +1,9 @@
 function wordsUppercase(input){
-    let pattern = /\w+/g
+    let pattern = /\w+/g;
     let words = input.match(pattern);
 
     words.forEach((val, i) => {
-        words[i] = val.toLocaleUpperCase()
+        words[i] = val.toLocaleUpperCase();
     });
 
     console.log(words.join(', ')); 

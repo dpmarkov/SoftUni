@@ -6,7 +6,7 @@ function greatestCommonDivisor(a, b) {
         let biggerN = Math.max(a, b);
         let result;
 
-        for (i = 1; i <= smallerN; i++){
+        for (let i = 1; i <= smallerN; i++){
             if (smallerN % i == 0 && biggerN % i == 0){
                 result = i;
             }

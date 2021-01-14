@@ -12,6 +12,6 @@ function negativePositiveNumbers(arr){
     console.log(result.join('\n'));
 }
 
-negativePositiveNumbers([7, -2, 8, 9])
+negativePositiveNumbers([7, -2, 8, 9]);
 console.log('---');
-negativePositiveNumbers([3, -2, 0, -1])
+negativePositiveNumbers([3, -2, 0, -1]);
