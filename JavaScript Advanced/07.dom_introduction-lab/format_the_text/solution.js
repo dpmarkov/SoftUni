@@ -1,9 +1,9 @@
 function solve() {
   let inputElement = document.getElementById('input');
-  let inputArr = inputElement.innerHTML.split('. ');
+  let inputArr = inputElement.innerHTML.split('.');
   
   //adding dots where needed..................................................................................................
-  if (inputArr.length > 1){
+  if (inputArr.length > 0){
     for (let i=0; i<inputArr.length-1; i++){
       inputArr[i] += '.';
     }
