@@ -13,11 +13,11 @@ router.get('/', homeController);
 router.get('/catalog', catalogController);
 router.get('/about', aboutController);
 
-router.get('/create', createController);
+router.post('/create', createController);
 
 router.get('/delete', deleteController);
 
-router.get('/upload', uploadController);
+router.post('/upload', uploadController);
 
 const port = 3000;
 const server = http.createServer(requestHandler);
@@ -26,8 +26,8 @@ function requestHandler(req, res) {
     const url = new URL(req.url, 'http://localhost');
     console.log('>>>', req.method, req.url);
     
-    const handler = req.match(req.url, url.pathname);
+    const handler = router.match(req.method, url.pathname);
     handler(req, res);
 }
-
+console.log(router.handlers);
 server.listen(port, () => console.log('Server listening on port', port));

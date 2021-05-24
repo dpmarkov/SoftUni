@@ -2,7 +2,7 @@ const staticFile = require('./controllers/static');
 const handlers = {};
 
 function match(method, url) {
-    if (method == 'GET' && url.startsWith('/static')) {
+    if (method == 'GET' && url.startsWith('/static/')) {
         return staticFile;
     }
 
@@ -22,7 +22,7 @@ function registerHandler(method, url, handler) {
 
     if (methods == undefined) {
         methods = {};
-        handlers[url] = method;
+        handlers[url] = methods;
     }
 
     handlers[url][method] = handler;
@@ -39,5 +39,6 @@ module.exports = {
     get: (...params) => registerHandler('GET', ...params),
     post: (...params) => registerHandler('POST', ...params),
     delete: (...params) => registerHandler('DELETE', ...params),
-    match
+    match,
+    handlers
 };

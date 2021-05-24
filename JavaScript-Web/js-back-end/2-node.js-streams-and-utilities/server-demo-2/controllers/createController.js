@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
 
     database.addItem(body);
     
-    res.WriteHead(301, {
+    res.writeHead(301, {
         'Location': '/catalog'
     });
     res.end();
