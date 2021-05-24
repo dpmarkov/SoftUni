@@ -28,4 +28,4 @@ module.exports = {
     loadTemplate,
     layout,
     render
-}
+};

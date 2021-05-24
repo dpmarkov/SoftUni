@@ -1,6 +1,7 @@
 const http = require('http');
 
 const router = require('./router');
+
 const aboutController = require('./controllers/aboutController');
 const homeController = require('./controllers/homeController');
 const catalogController = require('./controllers/catalogController');
@@ -24,6 +25,7 @@ const server = http.createServer(requestHandler);
 function requestHandler(req, res) {
     const url = new URL(req.url, 'http://localhost');
     console.log('>>>', req.method, req.url);
+    
     const handler = req.match(req.url, url.pathname);
     handler(req, res);
 }
