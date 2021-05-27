@@ -10,7 +10,12 @@ app.engine('.hbs', handlebars({
 app.set('view engine', '.hbs');
 
 app.get('/', (req, res) => {
-    res.render('home.hbs');
+    const data = {
+        name: 'Peter',
+        age: 25
+    };
+
+    res.render('home', data);
 });
 
 app.listen(3000);
