@@ -8,5 +8,5 @@ module.exports = (app) => {
     app.set('view engine', 'hbs');
     app.use('/static', express.static('static'));
     app.use('/js', express.static('js'));
-    app.use(express.urlencoded({ extended: false }));
+    app.use(express.urlencoded({ extended: false })); //body parser
 };
