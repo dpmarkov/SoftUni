@@ -1,3 +1,5 @@
+const Cube = require ('../models/Cube');
+
 const fs = require('fs/promises');
 const uniqid = require('uniqid');
 
@@ -67,10 +69,8 @@ async function getById(id) {
 }
 
 async function create(cube) {
-    const id = uniqid();
-    data[id] = cube;
-
-    await persist();
+    const record = new Cube(cube);
+    return record.save(); 
 }
 
 async function edit(id, cube) {
