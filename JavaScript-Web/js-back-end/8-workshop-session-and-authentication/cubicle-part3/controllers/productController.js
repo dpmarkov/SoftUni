@@ -58,7 +58,7 @@ router.get('/edit/:id', async (req, res) => {
     cube[`select${cube.difficulty}`] = true;
 
     if (!cube) {
-        res.redirect('404');
+        res.redirect('/404');
     } else {
         const ctx = {
             title: 'Edit Cube',
@@ -80,8 +80,28 @@ router.post('/edit/:id', async (req, res) => {
         await req.storage.edit(req.params.id, cube);
         res.redirect('/');
     } catch (err) {
-        res.redirect('404');
+        res.redirect('/404');
     }
+});
+
+router.get('/attach/:cubeId', async (req, res) =>  {
+    const cube = await req.storage.getById(req.params.cubeId);
+    const accessories = await req.storage.getAllAccessories((cube.accessories || []).map(a => a._id));
+
+    res.render('attach', {
+        title: 'Attach Stickers',
+        cube,
+        accessories
+    });
+});
+
+router.post('/attach/:cubeId', async (req, res) =>  {
+    const cubeId = req.params.cubeId;
+    const stickerId = req.body.accessory;
+
+    await req.storage.attachSticker(cubeId, stickerId);
+
+    res.redirect(`/details/${cubeId}`);
 });
 
 module.exports = router;

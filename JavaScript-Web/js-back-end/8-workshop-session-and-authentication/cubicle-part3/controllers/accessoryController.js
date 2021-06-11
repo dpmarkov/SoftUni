@@ -1,12 +1,12 @@
-const { Route } = require('express');
+const { Router } = require('express');
 
-const route = Route();
+const router = Router();
 
-route.get('/create', (req, res ) => {
+router.get('/create', (req, res ) => {
     res.render('createAccessory', { title: 'Create New Accessory' });
 });
 
-route.post('/create', async (req, res) => {
+router.post('/create', async (req, res) => {
     const accessory = {
         name: req.body.name,
         description: req.body.description,
@@ -18,4 +18,4 @@ route.post('/create', async (req, res) => {
     res.redirect('/products');
 });
 
-module.exports = route;
+module.exports = router;
