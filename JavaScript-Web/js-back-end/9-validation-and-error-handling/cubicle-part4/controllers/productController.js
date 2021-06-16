@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { body, validationResult } = require('express-validator');
 const { isAuth, isOwner } = require('../middlewares/guards');
 const { preloadCube } = require('../middlewares/preload');
 
@@ -23,12 +24,15 @@ router.get('/create', isAuth(), (req, res) => {
     res.render('create', { title: 'Create Cube' });
 });
 
-router.post('/create', isAuth(), async (req, res) => {
+router.post('/create', isAuth(),
+    body('imageUrl', 'Image must be a valid URL!').trim().isURL(),
+    body('diffculty').notEmpty().toInt(),
+    async (req, res) => {
     const cube = {
         name: req.body.name,
         description: req.body.description,
         imageUrl: req.body.imageUrl,
-        difficulty: Number(req.body.difficulty),
+        difficulty: req.body.difficulty,
         author: req.user._id
     };
 
