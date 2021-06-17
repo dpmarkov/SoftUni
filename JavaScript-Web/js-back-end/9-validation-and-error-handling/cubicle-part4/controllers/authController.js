@@ -1,37 +1,44 @@
-const { check, validationResult } = require('express-validator');
+const router = require('express').Router();
+const { body, validationResult } = require('express-validator');
+
 const { isGuest, isAuth } = require('../middlewares/guards');
 
-const router = require('express').Router();
 
 router.get('/register', isGuest(), (req, res) => {
     res.render('register', { title: 'Register' });
 });
 
-router.post('/register', isGuest(),
-    check('email', 'Please enter a valid email!').trim().isEmail().normalizeEmail(),
-    check('password', 'All fields are required').trim().notEmpty(),
-    check('repeatPassword', 'All fields are required').trim().notEmpty(),
-    check('username', 'Username length should be at least 3 characters long!').trim().isLength({ min: 3}),
-    async (req, res) => {
-    try {
-        const { errors } = validationResult(req);
-        if (errors.length > 0) {
-            throw new Error(errors.map(e => e.msg).join('\n'));
+router.post(
+    '/register',
+    isGuest(),
+    body('username', 'Username must be at least 5 characters long and may contain only alphanumeric characters').trim().isLength({ min: 1 }).isAlphanumeric(),
+    body('password', 'Password must be at least 8 characters long and may contain only alphanumeric characters').trim().isLength({ min: 1 }).isAlphanumeric(),
+    body('repeatPassword').trim().custom((value, { req }) => {
+        if (value != req.body.password) {
+            throw new Error('Passwords don\'t match');
         }
-        // const validEmail = validator.isEmail(req.body.email);
-        // if (!validEmail) {
-        // }
-        await req.auth.register(req.body);
-        res.redirect('/products');
-    } catch (err) {
-        const ctx = {
-            title: 'Register',
-            errors: err.message.split('\n'),
-            data: { username: req.body.username, email: req.body.email }
-        };
-        res.render('register', ctx);
-    }
-});
+        return true;
+    }),
+    async (req, res) => {
+        try {
+            const errors = Object.values(validationResult(req).mapped());
+            if (errors.length > 0) {
+                throw new Error(errors.map(e => e.msg).join('\n'));
+            }
+
+            await req.auth.register(req.body);
+            res.redirect('/products');
+        } catch (err) {
+            console.log(err);
+
+            const ctx = {
+                title: 'Register',
+                errors: err.message.split('\n'),
+                data: { username: req.body.username }
+            };
+            res.render('register', ctx);
+        }
+    });
 
 router.get('/login', isGuest(), (req, res) => {
     res.render('login', { title: 'Login' });

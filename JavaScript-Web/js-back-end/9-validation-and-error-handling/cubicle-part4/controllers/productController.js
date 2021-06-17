@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const { body, validationResult } = require('express-validator');
 const { isAuth, isOwner } = require('../middlewares/guards');
 const { preloadCube } = require('../middlewares/preload');
+const { parseMongooseError } = require('../util/parse');
 
 const router = Router();
 
@@ -24,27 +24,33 @@ router.get('/create', isAuth(), (req, res) => {
     res.render('create', { title: 'Create Cube' });
 });
 
-router.post('/create', isAuth(),
-    body('imageUrl', 'Image must be a valid URL!').trim().isURL(),
-    body('diffculty').notEmpty().toInt(),
-    async (req, res) => {
+router.post('/create', isAuth(), async (req, res) => {
     const cube = {
         name: req.body.name,
         description: req.body.description,
         imageUrl: req.body.imageUrl,
-        difficulty: req.body.difficulty,
+        difficulty: Number(req.body.difficulty),
         author: req.user._id
     };
 
     try {
         await req.storage.create(cube);
+        res.redirect('/');
     } catch (err) {
-        if (err.name == 'ValidationError') {
-            return res.render('create', { title: 'Create Cube', error: 'All fields are required. Image URL must be a valid URL.' });
-        }
-    }
+        cube[`select${cube.difficulty}`] = true;
+        
+        const ctx = {
+            title: 'Create Cube',
+            cube
+        };
 
-    res.redirect('/');
+        if (err.name == 'ValidationError') {
+            ctx.errors = parseMongooseError(err);
+        } else {
+            ctx.errors = [err.message];
+        }
+        res.render('create', ctx);
+    }
 });
 
 router.get('/details/:id', preloadCube(), async (req, res) => {
@@ -65,7 +71,7 @@ router.get('/details/:id', preloadCube(), async (req, res) => {
 
 router.get('/edit/:id', preloadCube(), isOwner(), async (req, res) => {
     const cube = req.data.cube;
-    
+
     if (!cube) {
         res.redirect('/404');
     } else {
