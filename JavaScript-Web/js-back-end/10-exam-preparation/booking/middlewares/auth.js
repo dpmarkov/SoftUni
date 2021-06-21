@@ -4,21 +4,23 @@ const jwt = require('jsonwebtoken');
 const { TOKEN_SECRET, COOKIE_NAME } = require('../config');
 const userService = require('../services/user');
 
-function init () {
-    return (req, res ,next) => {
-        req.auth = {
-            register (username, password) {
-
-            },
-            login (username, password) {
-                
-            },
-            logout () {
-
-            }
-        };
+module.exports = () => (req, res, next) => {
+    req.auth = {
+        async register(username, password) {
+            const token = await register(username, password);
+            res.cookie(COOKIE_NAME, token);
+        },
+        async login(username, password) {
+            const token = await login(username, password);
+            res.cookie(COOKIE_NAME, token);
+        },
+        logout() {
+            res.clearCookie(COOKIE_NAME);
+        }
     };
-}
+
+    next();
+};
 
 async function register(username, password) {
     //TODO => adapt parameters to project requirements
@@ -29,13 +31,13 @@ async function register(username, password) {
         throw new Error(`Username ${username} is already taken!`);
     }
 
-    const hashedPassword = await jwt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const user = userService.createUser(username, hashedPassword);
-    
+
     return generateToken(user);
 }
 
-async function login (username, password) {
+async function login(username, password) {
     const user = await userService.getUserByUsername(username);
 
     if (!user) {
@@ -51,7 +53,7 @@ async function login (username, password) {
     return generateToken(user);
 }
 
-function generateToken (userData) {
+function generateToken(userData) {
     return jwt.sign({
         _id: userData._id,
         username: userData.username
