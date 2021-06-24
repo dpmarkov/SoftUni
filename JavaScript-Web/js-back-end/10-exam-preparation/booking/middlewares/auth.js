@@ -5,34 +5,37 @@ const { TOKEN_SECRET, COOKIE_NAME } = require('../config');
 const userService = require('../services/user');
 
 module.exports = () => (req, res, next) => {
-    req.auth = {
-        async register(username, password) {
-            const token = await register(username, password);
-            res.cookie(COOKIE_NAME, token);
-        },
-        async login(username, password) {
-            const token = await login(username, password);
-            res.cookie(COOKIE_NAME, token);
-        },
-        logout() {
-            res.clearCookie(COOKIE_NAME);
-        }
-    };
+    if (parseToken(req, res)) {
+        req.auth = {
+            async register(username, email, password) {
+                const token = await register(username, email, password);
+                res.cookie(COOKIE_NAME, token);
+            },
+            async login(username, password) {
+                const token = await login(username, password);
+                res.cookie(COOKIE_NAME, token);
+            },
+            logout() {
+                res.clearCookie(COOKIE_NAME);
+            }
+        };
 
-    next();
+        next();
+    }
 };
 
-async function register(username, password) {
-    //TODO => adapt parameters to project requirements
+async function register(username, email, password) {
+    const existUser = await userService.getUserByUsername(username);
+    const existEmail = await userService.getUserByEmail(email);
 
-    const existing = await userService.getUserByUsername(username);
-
-    if (existing) {
+    if (existUser) {
         throw new Error(`Username ${username} is already taken!`);
+    } else if (existEmail) {
+        throw new Error(`Email ${email} is already taken!`);
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = userService.createUser(username, hashedPassword);
+    const user = await userService.createUser(username, email, hashedPassword);
 
     return generateToken(user);
 }
@@ -56,6 +59,26 @@ async function login(username, password) {
 function generateToken(userData) {
     return jwt.sign({
         _id: userData._id,
-        username: userData.username
+        username: userData.username,
+        email: userData.email
     }, TOKEN_SECRET);
+}
+
+function parseToken(req, res) {
+    const token = req.cookies[COOKIE_NAME];
+    
+    if (token) {
+        try {
+            const userData = jwt.verify(token, TOKEN_SECRET);
+            req.user = userData;
+            res.locals.user = userData; //viewable in the template
+        } catch (err) {
+            res.clearCookie(COOKIE_NAME);
+            res.redirect('/auth/login');
+            
+            return false;
+        }
+    }
+
+    return true;
 }
