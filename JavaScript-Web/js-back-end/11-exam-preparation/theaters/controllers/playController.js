@@ -34,7 +34,7 @@ router.get('/details/:id', isUser(), async (req, res) => {
         const play = await req.storage.getPlayById(req.params.id);
         play.hasUser = Boolean(req.user);
         play.isAuthor = req.user && req.user._id == play.author;
-        play.liked = req.user && play.usersLiked.includes(req.user._id);
+        play.liked = req.user && play.usersLiked.find(u => u._id == req.user._id);
 
         res.render('play/details', { play });
     } catch (err) {
@@ -82,20 +82,37 @@ router.post('/edit/:id', isUser(), async (req, res) => {
             throw new Error('You can not edit a play you have Not created!');
         }
 
-        await req.storage.editPlay(req.params._id, req.body);
-        
+        await req.storage.editPlay(req.params.id, req.body);
+
         res.redirect('/');
     } catch (err) {
         const ctx = {
             errors: parseError(err),
             play: {
+                _id: req.params.id,
                 title: req.body.title,
                 description: req.body.description,
                 imageUrl: req.body.imageUrl,
                 public: Boolean(req.body.public)
             }
         };
-        res.redirect('/play/edit/' + req.params._id, ctx);
+        res.render('play/edit', ctx);
+    }
+});
+
+router.get('/like/:id', isUser(), async (req, res) => {
+    try {
+        const play = await req.storage.getPlayById(req.params.id);
+
+        if (play.author == req.user._id) {
+            throw new Error('You can not like your own play!');
+        }
+
+        await req.storage.likePlay(req.params.id, req.user._id);
+        res.redirect('/play/details/' + req.params.id);
+    } catch (err) {
+        console.log(err.message);
+        res.redirect('/play/details/' + req.params.id);
     }
 });
 
