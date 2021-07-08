@@ -49,9 +49,9 @@
                     <a href="/trips/edit/{{_id}}" class="btn btn-warning">Edit this trip</a>
                     
                     {{else}}
-                    {{#if availableSeats}}
+                    {{#if hasUserAndSeats}}
                     <!-- logged in user with available seats -->
-                    <a href="/trips/join/{{_id}}" class="btn btn-join">Join now, [ {{seatsLeft}} ] seats left!</a>
+                    <a href="/trips/join/{{_id}}" class="btn btn-join">Join now, [ {{availableSeats}} ] seats left!</a>
                     {{/if}}
                     {{/if}}
 

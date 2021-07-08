@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);
     app.use('/trips', tripController);
+    app.get('*', (req, res) => res.render('notFound'));
 };
