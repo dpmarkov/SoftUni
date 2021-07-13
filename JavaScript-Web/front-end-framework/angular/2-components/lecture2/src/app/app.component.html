@@ -1,0 +1,28 @@
+{{title}}
+<input #titleInput type="text" placeholder="type new title">
+<button (click)="changeTitle(titleInput)">Change Title</button>
+
+<app-test></app-test>
+{{count}}
+<input type="text" [value]="count">
+
+
+
+<button (click)="buttonClickHandler()">Click Me!</button>
+
+<ul>
+    <li *ngFor="let user of users">
+        {{user.name}}
+    </li>
+</ul>
+
+<div *ngIf="showText">Visible</div>
+<button (click)="toggleHandler()">{{showText ? 'Hide Text' : 'Show Text'}}</button>
+<br><br>
+<h2>Header</h2>
+
+<div id="content">
+    <app-user-list [userArray]="users" (addUser)="addNewUserHandler($event)"></app-user-list>
+</div>
+
+<h2>Footer</h2>
