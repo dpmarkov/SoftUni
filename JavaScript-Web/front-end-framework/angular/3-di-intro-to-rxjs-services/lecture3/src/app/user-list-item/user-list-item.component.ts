@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Iuser } from '../interfaces/user';
+import { IUser } from '../interfaces/user';
 
 @Component({
   selector: 'app-user-list-item',
@@ -8,7 +8,7 @@ import { Iuser } from '../interfaces/user';
 })
 export class UserListItemComponent implements OnInit {
 
-  @Input() user: Iuser | undefined; 
+  @Input() user: IUser | undefined; 
 
   constructor() { }
 

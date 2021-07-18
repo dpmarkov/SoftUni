@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IUser } from './interfaces/user';
 import { UserService } from './user.service';
 
 @Component({
@@ -6,8 +7,26 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  constructor(public userService: UserService) {
+export class AppComponent implements OnInit{
+  users: IUser[] | undefined;
 
+  constructor(public userService: UserService) {}
+
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(search?: string): void {
+    this.userService.loadUsers(search).subscribe(users => this.users = users);
+  }
+
+  reloadButtonHandler(): void {
+    this.users = undefined;
+    this.loadUsers();
+  }
+
+  searchButtonHandler(searchInput: HTMLInputElement): void {
+    const { value } = searchInput;
+    this.loadUsers(value);
   }
 }
