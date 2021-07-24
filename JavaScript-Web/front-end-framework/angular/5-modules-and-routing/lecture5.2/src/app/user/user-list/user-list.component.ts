@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser } from '../../interfaces/user';
 import { UserService } from '../user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from '../user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
   users: IUser[] | undefined;
 
   constructor(public userService: UserService) {}

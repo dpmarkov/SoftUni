@@ -7,6 +7,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const myStringInjectionToken = new InjectionToken('myString');
 export const myStringInjectionToken2 = new InjectionToken('myString2');
@@ -14,7 +15,8 @@ export const myStringInjectionToken2 = new InjectionToken('myString2');
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
