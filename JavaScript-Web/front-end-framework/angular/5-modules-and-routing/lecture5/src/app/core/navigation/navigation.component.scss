@@ -1,0 +1,13 @@
+nav {
+    background-color: beige;
+}
+
+nav a {
+    color: blue;
+    margin: 0 0.2vw;
+}
+
+nav a.active {
+    color: red;
+    font-weight: 700;
+}
