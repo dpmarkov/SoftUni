@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { IUser } from '../../interfaces/user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -7,7 +8,25 @@ import { IUser } from '../../interfaces/user';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent {
+  users: IUser[] | undefined;
 
-  @Input() userArray: IUser[] = [];
+  constructor(public userService: UserService) {}
 
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(search?: string): void {
+    this.userService.loadUsers(search).subscribe(users => this.users = users);
+  }
+
+  reloadButtonHandler(): void {
+    this.users = undefined;
+    this.loadUsers();
+  }
+
+  searchButtonHandler(searchInput: HTMLInputElement): void {
+    const { value } = searchInput;
+    this.loadUsers(value);
+  }
 }

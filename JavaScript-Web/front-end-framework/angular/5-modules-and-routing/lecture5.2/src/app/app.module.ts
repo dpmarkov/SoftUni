@@ -1,12 +1,12 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { AboutComponent } from './about/about.component';
+import { AppRoutingModule } from './app-routing.module';
 
 export const myStringInjectionToken = new InjectionToken('myString');
 export const myStringInjectionToken2 = new InjectionToken('myString2');
@@ -21,7 +21,8 @@ export const myStringInjectionToken2 = new InjectionToken('myString2');
     HttpClientModule,
     CoreModule,
     SharedModule,
-    UserModule
+    UserModule,
+    AppRoutingModule
   ],
   providers: [
     {
@@ -31,8 +32,8 @@ export const myStringInjectionToken2 = new InjectionToken('myString2');
     {
       provide: myStringInjectionToken2,
       useValue: 'Hello World 2!'
-    }, 
-    UserService],
+    }
+  ],
 
   bootstrap: [AppComponent]
 })

@@ -1,13 +1,7 @@
 <app-header></app-header>
 
 <div id="content">
-    <div *ngIf="users">
-        <button (click)="reloadButtonHandler()">Reload Data</button>
-        <input #searchInput type="text" placeholder="enter text to search">
-        <button (click)="searchButtonHandler(searchInput)">Go!</button>
-        <app-user-list  [userArray]="users!"></app-user-list>
-    </div>  
-    <div *ngIf="!users">Loading...</div>
+    <router-outlet></router-outlet>
 </div>
 
 <app-footer></app-footer>
