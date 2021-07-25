@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AsideComponent } from './aside/aside.component';
 import { RouterModule } from '@angular/router';
 import { LocalStorage } from './injection-tokens';
+import { AuthActivate } from './guards/auth.activate';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { LocalStorage } from './injection-tokens';
         throw new Error('Platform is not implemented!');
       },
       deps: [PLATFORM_ID]
-    }
+    },
+    AuthActivate
   ]
 })
 export class CoreModule {
