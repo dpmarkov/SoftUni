@@ -1,10 +1,10 @@
 export interface ITheme {
     subscribers: string[];
-    posts: string[];
-    _id: string,
-    themeName: string,
+    posts: any;
+    _id: string;
+    themeName: string;
     userId: {
-        themes: string,
+        themes: string[],
         posts: string[],
         _id: string,
         tel: string,

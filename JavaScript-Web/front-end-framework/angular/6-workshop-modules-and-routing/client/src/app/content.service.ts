@@ -14,6 +14,10 @@ export class ContentService {
     return this.http.get<ITheme[]>(`${API_URL}/themes`);
   }
 
+  loadTheme(id: string) {
+    return this.http.get<ITheme>(`${API_URL}/themes/${id}`);
+  }
+
   loadPosts(limit?:number) {
     const query = limit ? `?limit=${limit}` : '';
     return this.http.get<IPost[]>(`${API_URL}/posts${query}`);
