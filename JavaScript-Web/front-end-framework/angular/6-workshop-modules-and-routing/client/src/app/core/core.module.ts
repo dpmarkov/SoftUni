@@ -3,7 +3,6 @@ import { CommonModule, isPlatformBrowser, isPlatformServer } from '@angular/comm
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AsideComponent } from './aside/aside.component';
 import { RouterModule } from '@angular/router';
 import { LocalStorage } from './injection-tokens';
 import { AuthActivate } from './guards/auth.activate';
@@ -11,8 +10,7 @@ import { AuthActivate } from './guards/auth.activate';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent,
-    AsideComponent
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +19,7 @@ import { AuthActivate } from './guards/auth.activate';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent,
-    AsideComponent
+    FooterComponent
   ],
   providers: [
     {
