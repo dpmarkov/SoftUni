@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<div id="content">
+    <router-outlet></router-outlet>
+</div>
+
+
+<button (click)="toggleActive()" appHighlight [colorChange]="isActive">Toggle active</button>
+
+<ng-template #isActiveTemplate>
+    IS ACTIVE IS TRUE
+</ng-template>
+
+<ng-template #isNotActiveTemplate>
+    IS ACTIVE IS FALSE
+</ng-template>
+
+<ng-container *ngTemplateOutlet="isActive ? isActiveTemplate : isNotActiveTemplate"></ng-container>
+<br>
+<ng-container *ngIf="isActive else isNotActiveTemplate">
+    IS ACTIVE IS TRUE - from ngIf
+</ng-container>
+
+<app-footer></app-footer>

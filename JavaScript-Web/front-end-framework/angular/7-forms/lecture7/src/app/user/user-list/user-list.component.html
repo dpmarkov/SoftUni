@@ -1,0 +1,9 @@
+<div *ngIf="users">
+    <button (click)="reloadButtonHandler()">Reload Data</button>
+    <input #searchInput type="text" placeholder="enter text to search">
+    <button (click)="searchButtonHandler(searchInput)">Go!</button>
+    <div id="container">
+        <app-user-list-item *ngFor="let user of users" [user]="user"></app-user-list-item>
+    </div>
+</div>
+<app-loader *ngIf="!users"></app-loader>
