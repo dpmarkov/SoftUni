@@ -5,9 +5,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class HighlightDirective {
 
-  @Input()
-  
-  set colorChange(isActive: boolean) {
+  @Input() set appHighlight(isActive: boolean) {
     if (isActive) {
       this.elementRef.nativeElement.style.color = 'red';
     } else {

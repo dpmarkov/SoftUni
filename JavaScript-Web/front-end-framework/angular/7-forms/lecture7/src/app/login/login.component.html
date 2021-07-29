@@ -1,0 +1,54 @@
+<form #form="ngForm" (ngSubmit)="loginHandler(form)">
+    {{form.value.email}}<br>
+    {{emailInput.value}}
+    <br>
+    <ul *ngIf="emailInput.invalid && emailInput.touched" class="errors">
+        <li *ngIf="emailInput.errors?.required">
+            Email is required!
+        </li>
+
+        <li *ngIf="emailInput.errors?.email">
+            Email is invalid!
+        </li>
+    </ul>
+    <br>
+    <div class="form-group">
+        <label for="email" [appHighlight]="true">Email: </label>
+        <input type="text" name="email" id="email" #emailInput="ngModel" ngModel required email minlength="10">
+    </div>
+    <div class="form-group">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" #passwordInput="ngModel" ngModel required minlength="6">
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="errors">
+            <div *ngIf="passwordInput.errors?.required">
+                Password is required!
+            </div>
+            <div *ngIf="passwordInput.errors?.email">
+                Password is invalid!
+            </div>
+            <div *ngIf="passwordInput.errors?.minlength">
+                Password should be at least 6 characters long!
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="re-password">Repeat Password: </label>
+        <input type="password" name="re-password" id="re-password" #repasswordInput="ngModel" ngModel
+            appSameValue="password" required minlength="6">
+        <div *ngIf="repasswordInput.invalid && repasswordInput.touched" class="errors">
+            <div *ngIf="repasswordInput.errors?.required">
+                Repeat Password is required!
+            </div>
+            <div *ngIf="repasswordInput.errors?.email">
+                Repeat Password is invalid!
+            </div>
+            <div *ngIf="repasswordInput.errors?.minlength">
+                Repeat Password should be at least 6 characters long!
+            </div>
+            <div *ngIf="repasswordInput.errors?.sameValue">
+                Passwords don't match!
+            </div>
+        </div>
+    </div>
+    <button>Submit</button>
+</form>

@@ -5,7 +5,7 @@
 </div>
 
 
-<button (click)="toggleActive()" appHighlight [colorChange]="isActive">Toggle active</button>
+<button (click)="toggleActive()" [appHighlight]="isActive">Toggle active</button>
 
 <ng-template #isActiveTemplate>
     IS ACTIVE IS TRUE
@@ -20,5 +20,11 @@
 <ng-container *ngIf="isActive else isNotActiveTemplate">
     IS ACTIVE IS TRUE - from ngIf
 </ng-container>
+<br>
+
+<ng-container *appMyIf="isActive">
+    active with appMyIf
+</ng-container>
+
 
 <app-footer></app-footer>

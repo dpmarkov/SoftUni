@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TestModule } from './test/test.module';
 import { HighlightDirective } from './highlight.directive';
+import { MyIfDirective } from './my-if.directive';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { SameValueDirective } from './same-value.directive';
 
 export const myStringInjectionToken = new InjectionToken('myString');
 export const myStringInjectionToken2 = new InjectionToken('myString2');
@@ -19,11 +23,15 @@ export const myStringInjectionToken2 = new InjectionToken('myString2');
     AppComponent,
     AboutComponent,
     NotFoundComponent,
-    HighlightDirective
+    HighlightDirective,
+    MyIfDirective,
+    LoginComponent,
+    SameValueDirective
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     CoreModule,
     SharedModule,
     UserModule,
