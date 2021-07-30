@@ -12,8 +12,9 @@ import { TestModule } from './test/test.module';
 import { HighlightDirective } from './highlight.directive';
 import { MyIfDirective } from './my-if.directive';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SameValueDirective } from './same-value.directive';
+import { RegisterComponent } from './register/register.component';
 
 export const myStringInjectionToken = new InjectionToken('myString');
 export const myStringInjectionToken2 = new InjectionToken('myString2');
@@ -26,12 +27,14 @@ export const myStringInjectionToken2 = new InjectionToken('myString2');
     HighlightDirective,
     MyIfDirective,
     LoginComponent,
-    SameValueDirective
+    SameValueDirective,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     CoreModule,
     SharedModule,
     UserModule,
