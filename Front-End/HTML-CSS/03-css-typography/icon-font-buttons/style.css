@@ -1,0 +1,21 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+p{
+    margin: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn1{
+    background-color: #008000;
+}
+
+.btn2{
+    background-color: #FF8C00;
+}
