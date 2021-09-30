@@ -1,0 +1,7 @@
+html, body{
+    font-family: Helvetica, sans-serif;
+}
+
+nav, nav ul li{
+    display: inline-block;
+}
