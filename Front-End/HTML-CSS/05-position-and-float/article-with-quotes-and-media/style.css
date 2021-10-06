@@ -1,0 +1,30 @@
+html, body{
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Helvetica, sans-serif
+}
+
+blockquote {
+    border-left: 3px solid #717171;
+    padding-left: 15px;
+}
+
+img{
+    padding: 5px;
+    border: 3px solid black;
+    margin: 20px;
+}
+
+img.img1{
+    float: right;
+}
+
+img.img2{
+    float: left;
+}
+
+p.site-title{
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
