@@ -1,0 +1,46 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+div.viewport {
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+}
+
+div.viewport:nth-child(1) {
+    background-color: bisque;
+}
+
+div.viewport:nth-child(2) {
+    background-color: cornflowerblue;
+}
+
+section.card {
+    display: block;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 10%;
+    height: auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+div.shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+i.fas {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+}
