@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: beige;
+}
+
+header, main, aside, footer {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 14px #000;
+    margin: 20px auto;
+    height: 300px;
+}
+
+main {
+    flex-grow: 2;
+    margin-right: 40px;
+}
+
+aside {
+    flex-grow: 1;
+}
+
+header, footer {
+    flex-basis: 100%;
+}
