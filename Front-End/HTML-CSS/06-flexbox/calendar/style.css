@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box
+}
+
+.container, .week, .notes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 65vw;
+}
+
+span {
+    border: 1px solid black;
+    height: 100px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.week{
+    flex-grow: 4;
+    justify-content: baseline;
+}
+
+.week-titles{
+    flex-basis: 100%;
+}
+
+.weekday{
+    width: 20%;
+}
+
+.weekend {
+    width: 50%;
+}
+
+.notes {
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: normal;
+}
+
+.note-item{
+    height: 200px;
+}
