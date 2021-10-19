@@ -1,0 +1,34 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.cards-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+article {
+    width: 300px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    margin: 10px;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    border-top: 2px solid #b1b1b1;
+}
+
+.masonry {
+    flex-direction: column;
+    max-height: 1700px;
+}
+
+.flex {
+
+}
