@@ -1,0 +1,110 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+img {
+    padding: 5px;
+    border: 3px solid black;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.img1 {
+    float: right;
+}
+
+.img2 {
+    float: left;
+}
+
+blockquote {
+    font-family: Georgia, serif;
+    border-left: 3px solid #717171;
+    padding-left: 15px;
+    float: right;
+    width: 50%;
+}
+
+aside a {
+    color: rgb(0, 153, 0);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+    font-size: 1em;
+    line-height: 1.2;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+p.site-title {
+    font-size: 3em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+ul {
+    list-style: square;
+}
+
+header {
+    flex-basis: 100%;
+}
+
+main {
+    flex-basis: 100%;
+}
+
+aside {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.aside-wrap {
+    margin: 0 auto;
+}
+
+@media all and (max-width: 500px) {
+    html, body {
+        font-size: 12px;
+    }
+}
+
+@media all and (min-width: 501px) {
+    html, body {
+        font-size: 14px;
+    }
+}
+
+@media all and (min-width: 601px) {
+    html, body {
+        font-size: 16px;
+    }
+}
+
+@media all and (min-width: 801px) {
+    html, body {
+        font-size: 18px;
+    }
+}
+
+@media all and (min-width: 1301px) {
+    html, body {
+        font-size: 21px;
+    }
+}
+
+@media all and (min-width: 1801px) {
+    html, body {
+        font-size: 23px;
+    }
+}
