@@ -1,0 +1,37 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
+@import url(./reset.css);
+@import url(./layout.css);
+@import url(./navigation.css);
+
+
+@media all and (max-width: 1000px) {
+    header, ul {
+        flex-direction: column;
+    }
+    
+    header {
+        border-bottom: none;
+    }
+    
+    header nav ul {
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        margin-top: 0;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    .menu {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 500px) {
+    h1 {
+        text-align: center;
+    }
+}
