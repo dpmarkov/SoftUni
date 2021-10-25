@@ -1,0 +1,200 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+div.wrapper {
+    margin: 0 auto;
+    width: 70vw;
+}
+
+/*navigation*/
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+header section.logo p {
+    margin: 0;
+}
+
+header section.logo p.motto {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+header section.logo p.title {
+    font-size: 2.76em;
+    color: #800080;
+}
+
+header nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+header i.menu {
+    display: none;
+}
+
+/*content*/
+
+main section {
+    margin: 0 auto 2em auto;
+    text-align: center;
+}
+
+main section p.title {
+    position: relative;
+    display: inline-block;
+    font-size: 3em;
+    margin-top: 0;
+}
+
+main section button {
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 6px 18px;
+    font-weight: bold;
+}
+
+main section.need-website {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+main section.need-website article {
+    flex-basis: 70%;
+}
+
+main section.need-website i.fas {
+    font-size: 12em;
+}
+
+main section p.title::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 150px;
+    background-color: black;
+}
+
+main section.need-website p.title::after {
+    background-color: transparent;
+}
+
+main section article.card {
+    margin: 30px;
+    flex-basis: 25%;
+}
+
+main section article.card img {
+    height: 120px;
+    width: 120px;
+    background-color: #68347b;
+    border-radius: 50%;
+}
+
+main section.our-team section, main section.testimonials section {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+main section p.name {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+main section p.occupation {
+    font-size: 22px;
+}
+
+main section p.description {
+    font-style: italic;
+    font-size: 22px;
+}
+
+main section.newsletter {
+    background-color: #68347b;
+    padding: 40px 0;
+    width: 100%;
+}
+
+main section.newsletter p.title {
+    color: white;
+}
+
+main section.newsletter button {
+    background-color: white;
+}
+
+footer {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+}
+
+footer section {
+    flex-shrink: 33%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+footer section.sitemap ul {
+    list-style-type: none;
+}
+
+footer section.sitemap ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+footer section p.title {
+    font-size: 18px;
+}
+
+@media all and (max-width: 1100px) {
+    header i.menu {
+        display: block;
+    }
+
+    header nav ul {
+        display: none;
+    }
+
+    main section.need-website i.fas {
+        font-size: 6em;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
