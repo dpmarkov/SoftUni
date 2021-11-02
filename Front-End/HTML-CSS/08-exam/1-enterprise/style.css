@@ -1,0 +1,73 @@
+@import url(./reset.css);
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    margin: 90px 200px;
+    padding: 60px 60px 20px 60px;
+    background-color: #f6f8f9;
+    border-radius: 20px;
+}
+
+.main-content {
+    width: 420px;
+}
+
+.main-content-header-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: #29323f;
+}
+
+.main-content-header-title {
+    font-size: 34px;
+    font-weight: 100;
+    margin-top: 10px;
+    color: #29323f;
+}
+
+.main-content-text {
+    color: #666f78;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.main-img_wrap {
+    width: 390px;
+    position: relative;
+    bottom: -21px;
+}
+
+.main-img_wrap-img {
+    display: block;
+    width: 100%;
+}
+
+.main-content-buttons-btn-active {
+    border-radius: 3px;
+    border: 1px solid #7573f6;
+    background-color: #7573f6;
+    padding: 14px 26px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.main-content-buttons-btn {
+    border-radius: 3px;
+    border: 1px solid black;
+    background-color: transparent;
+    padding: 14px 26px;
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
+}
