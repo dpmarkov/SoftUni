@@ -1,0 +1,218 @@
+@import url(./reset.css);
+@import url(https://use.fontawesome.com/releases/v5.15.4/css/all.css);
+@import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,600;0,600;1,200&display=swap);
+html {
+    font-family: Raleway;
+    color: black;
+}
+
+body {
+    margin: 0 230px;
+}
+
+.container {
+    position: relative;
+    background-color: #efefef;
+    margin: 30px;
+    height: 560px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu {
+    position: absolute;
+    right: 35px;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-text {
+    margin: 0 10px 0 0;
+    font-size: 13px;
+}
+
+.fa-bars {
+    font-size: 18px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content-italic {
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 26px;
+}
+
+h1 .thin {
+    font-weight: 100;
+}
+
+.content-text {
+    width: 449px;
+}
+
+.container.first .content-image>img {
+    display: block;
+    width: 600px;
+    position: relative;
+    bottom: -39px;
+    left: 60px;
+}
+
+.container.first .content-text {
+    position: relative;
+    left: -40px;
+}
+
+.content-left_line {
+    height: 60px;
+    border-left: 1px solid black;
+    margin-left: 0;
+    margin-top: 30px;
+}
+
+.container.second .content-image>img {
+    display: block;
+    width: 440px;
+}
+
+.container.second .content-text {
+    width: 640px;
+}
+
+.container.second {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.container.second h1 {
+    position: relative;
+    left: 90px;
+}
+
+.container.second h1::before {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    left: -90px;
+    top: 50%;
+}
+
+.container.third {
+    background: url(./images/thumb-1.jpeg);
+    background-position: center;
+    background-size: 1383px;
+    overflow: hidden;
+}
+
+.container.fourth .content-image>img {
+    display: block;
+    width: 600px;
+}
+
+.container.fourth .content-image {
+    margin-left: 100px;
+}
+
+.container.fifth .content-image {
+    margin: 0 100px;
+}
+
+.container.fifth .content-image>img {
+    display: block;
+    width: 400px;
+}
+
+.container.fifth .content-image.positioned_center>img {
+    display: block;
+    width: 500px;
+}
+
+.container.fifth .content-image.positioned_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.container.sixth .content-text {
+    text-align: center;
+    width: 700px;
+}
+
+.container.sixth form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    margin: 50px auto;
+}
+
+.container.sixth input[type=text] {
+    border: 1px solid black;
+    background-color: transparent;
+    padding: 8px 16px;
+    width: 48%;
+}
+
+.container.sixth input[type=submit] {
+    border: 1px solid black;
+    background-color: black;
+    padding: 8px 16px;
+    width: 100%;
+    font-weight: bold;
+    color: #efefef;
+}
+
+.container.sixth textarea {
+    border: 1px solid black;
+    background-color: transparent;
+    padding: 8px 16px;
+    width: 100%;
+    resize: none;
+}
+
+.container.sixth .form-row {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.container.sixth footer>p {
+    font-size: 10px;
+}
+
+.container.second .social_icons {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.container.second .fab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    background-color: #909090;
+    color: #efefef;
+    border-radius: 1px;
+    margin-right: 20px;
+}
