@@ -1,4 +1,5 @@
 import './App.css';
+import Counter from './components/Counter';
 import TodoList from './components/TodoList';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
       <main>
         <TodoList />
+        <Counter />
       </main>
 
       <footer>
