@@ -1,3 +1,4 @@
+import { uniqid } from 'uniqid';
 import { useEffect, useState } from 'react';
 import TodoListItem from './TodoListItem';
 
@@ -12,10 +13,10 @@ export default function TodoList() {
 
     function addBtnClickHandler(e) {
         const todo = {
-            id: todos.length,
+            id: uniqid(),
             text: e.target.previousSibling.value
         };
-        
+
         setTodos(state => [
             ...state,
             todo
@@ -24,13 +25,19 @@ export default function TodoList() {
         e.target.previousSibling.value = '';
     }
 
+    const todoDeleteClickHandler = (id) => {
+        console.log(`Todo task with id ${id} is deleted!`);
+
+        setTodos(state => state.filter(todo => todo.id !== id));
+    };
+
     return (
         <>
             <input type="text" name="todoInput" />
             <button onClick={addBtnClickHandler}>Add</button>
 
             <ul>
-                {todos.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
+                {todos.map(todo => <TodoListItem key={todo.id} todo={todo} onDelete={todoDeleteClickHandler} />)}
             </ul>
         </>
     );
